@@ -65,7 +65,16 @@ const ChartWidget = () => {
             <LineChart data={salesData?.data}>
               <XAxis dataKey="date" />
               <YAxis />
-              <Tooltip />
+              <Tooltip
+                formatter={(value, name, props) => {
+                  return (
+                    <>
+                      {value} <br />
+                      topCategory: {props.payload.topCategory}
+                    </>
+                  );
+                }}
+              />
               {option === "totalSales" && (
                 <Line type="monotone" dataKey="totalSales" stroke="#3b82f6" />
               )}
