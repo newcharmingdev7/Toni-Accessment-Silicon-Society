@@ -20,4 +20,4 @@ const SalesDataSchema = new Schema<SalesData>({
 });
 
 export default mongoose.models.sales ||
-  mongoose.model<SalesData>("sales", SalesDataSchema);
+  mongoose.model<SalesData>("sales", SalesDataSchema, "sales");

@@ -20,7 +20,7 @@ const ChartWidget = () => {
       setLoading(true);
       const response = await fetch("/api/fetchSalesData");
       const data = await response.json();
-      setSalesData(data);
+      setSalesData(data[0]);
     } catch (error) {
       console.error("Error fetching sales data:", error);
     } finally {
@@ -40,12 +40,12 @@ const ChartWidget = () => {
         <div className="bg-white p-4 shadow-md rounded-lg">
           <div className="text-center mb-4">
             <h3 className="text-lg font-semibold">
-              Sales Data for {salesDataMock.timeframe}
+              Sales Data for {salesData?.timeframe}
             </h3>
-            <h3>{salesDataMock.company}</h3>
+            <h3>{salesData?.company}</h3>
           </div>
           <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={salesDataMock?.data}>
+            <LineChart data={salesData?.data}>
               <XAxis dataKey="date" />
               <YAxis />
               <Tooltip />
